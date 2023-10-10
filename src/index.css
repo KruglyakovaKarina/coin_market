@@ -5,9 +5,49 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(241, 241, 241);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.container {
+  max-width: 1024px;
+  background-color: white;
+  border-radius: 10px;
+  margin: 30px auto;
+  box-shadow: 0px 0px 15px 5px rgba(60, 60, 60, 0.2);
+  padding: 0 20px;
+}
+
+.mainTable {
+  max-width: 1024px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.mainTable th {
+  padding: 20px 0;
+}
+
+.mainTable td {
+  padding: 9px 10px;
+  text-align: center;
+  border-bottom: 1px solid #dcdce1;
+}
+
+.mainTable tr {
+  border-bottom: 1px solid #dcdce1;
+}
+
+.coinNameContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.coinLogo {
+  width: 40px;
 }
