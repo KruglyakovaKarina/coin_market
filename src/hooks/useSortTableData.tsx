@@ -23,8 +23,10 @@ export const useSortableData = (items: ICoin[]) => {
         });
       } else {
         return sortConfig.direction === DirectionEnum.ASC
-          ? sortableItems.sort()
-          : sortableItems.sort().reverse();
+          ? sortableItems.sort((a, b) => b.name.localeCompare(a.name))
+          : sortableItems
+              .sort((a, b) => b.name.localeCompare(a.name))
+              .reverse();
       }
     }
     return sortableItems ?? [];
