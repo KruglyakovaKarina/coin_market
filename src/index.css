@@ -30,15 +30,15 @@ code {
 
 .mainTable th {
   padding: 20px 0;
+  border-bottom: 1px solid #dcdce1;
 }
 
 .mainTable td {
   padding: 9px 10px;
   text-align: center;
-  border-bottom: 1px solid #dcdce1;
 }
 
-.mainTable tr {
+.mainTable tr:not(:last-child) {
   border-bottom: 1px solid #dcdce1;
 }
 
@@ -50,4 +50,28 @@ code {
 
 .coinLogo {
   width: 40px;
+}
+
+.btnThSort {
+  cursor: pointer;
+  border: 0;
+  background-color: white;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.btnViewMore {
+  padding: 10px 15px;
+  margin: 30px auto;
+  display: block;
+  font-size: 20px;
+  border: 0;
+  border-radius: 5px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.btnViewMore:hover {
+  background-color: rgb(139, 139, 139);
+  color: white;
 }
