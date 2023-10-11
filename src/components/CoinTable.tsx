@@ -5,25 +5,23 @@ import { formatNum } from '../helper/formatNum';
 import { useSortableData } from '../hooks/useSortTableData';
 import { ICoin } from '../interfaces/coin.interface';
 
-interface ICoinTable {
-  coins: ICoin[];
-}
-
 const CoinTable = () => {
   const [coins, setCoins] = useState<ICoin[]>([]);
-  const [limit, setLimit] = useState(20);
+  const limit = 20;
+  const [page, setPage] = useState(0);
+
   useEffect(() => {
     const fetchCoins = async () => {
       const res = await fetch(
-        `https://api.coincap.io/v2/assets?limit=${limit}`
+        `https://api.coincap.io/v2/assets?limit=${limit}&offset=${page * limit}`
       );
       const data = await res.json();
-      console.log(data.data);
       setCoins(data.data);
     };
 
     fetchCoins();
-  }, [limit]);
+  }, [page]);
+
   const { items, requestSort } = useSortableData(coins);
   return (
     <div>
@@ -120,13 +118,23 @@ const CoinTable = () => {
           </tbody>
         </table>
       </div>
-      <button
-        type='button'
-        className='btnViewMore'
-        onClick={() => setLimit(limit + 20)}
-      >
-        View more
-      </button>
+      <div className='btnPagContainer'>
+        <button
+          type='button'
+          className='btnPag'
+          onClick={() => setPage(page - 1)}
+          disabled={page < 1}
+        >
+          Back
+        </button>
+        <button
+          type='button'
+          className='btnPag'
+          onClick={() => setPage(page + 1)}
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 };

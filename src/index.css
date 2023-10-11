@@ -60,10 +60,15 @@ code {
   font-size: 16px;
 }
 
-.btnViewMore {
-  padding: 10px 15px;
+.btnPagContainer {
   margin: 30px auto;
-  display: block;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1064px;
+}
+
+.btnPag {
+  padding: 10px 15px;
   font-size: 20px;
   border: 0;
   border-radius: 5px;
@@ -71,7 +76,7 @@ code {
   cursor: pointer;
 }
 
-.btnViewMore:hover {
+.btnPag:hover {
   background-color: rgb(139, 139, 139);
   color: white;
 }

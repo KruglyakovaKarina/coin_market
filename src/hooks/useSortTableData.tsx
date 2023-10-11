@@ -24,11 +24,11 @@ export const useSortableData = (items: ICoin[]) => {
       } else {
         return sortConfig.direction === DirectionEnum.ASC
           ? sortableItems.sort((a: any, b: any) =>
-              b[sortConfig.key].localeCompare(a[sortConfig.key])
+              a[sortConfig.key].localeCompare(b[sortConfig.key])
             )
           : sortableItems
               .sort((a: any, b: any) =>
-                b[sortConfig.key].localeCompare(a[sortConfig.key])
+                a[sortConfig.key].localeCompare(b[sortConfig.key])
               )
               .reverse();
       }
