@@ -4,25 +4,33 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { formatNum } from '../helper/formatNum';
 import { useSortableData } from '../hooks/useSortTableData';
 import { ICoin } from '../interfaces/coin.interface';
+import Spinner from './Spinner';
 
 const CoinTable = () => {
   const [coins, setCoins] = useState<ICoin[]>([]);
   const limit = 20;
   const [page, setPage] = useState(0);
+  const [canShowMore, setCanShowMore] = useState(true);
+
+  const fetchCoins = async () => {
+    const res = await fetch(
+      `https://api.coincap.io/v2/assets?limit=${limit}&offset=${page * limit}`
+    );
+    const data = await res.json();
+    if (data.data.length) {
+      setCanShowMore(true);
+      setCoins([...coins, ...data.data]);
+    } else {
+      setCanShowMore(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchCoins = async () => {
-      const res = await fetch(
-        `https://api.coincap.io/v2/assets?limit=${limit}&offset=${page * limit}`
-      );
-      const data = await res.json();
-      setCoins(data.data);
-    };
-
     fetchCoins();
   }, [page]);
 
   const { items, requestSort } = useSortableData(coins);
+
   return (
     <div>
       <div className='container'>
@@ -96,8 +104,8 @@ const CoinTable = () => {
                         className='coinLogo'
                         src={`https://assets.coincap.io/assets/icons/${symbol.toLowerCase()}@2x.png`}
                       ></img>
-                      <div className='coinName'>{name}</div>
-                      <div className='coinSymbol'>{symbol}</div>
+                      <p className='coinName'>{name}</p>
+                      <p className='coinSymbol'>{symbol}</p>
                     </div>
                   </td>
                   <td>{formatNum(priceUsd)}</td>
@@ -118,23 +126,15 @@ const CoinTable = () => {
           </tbody>
         </table>
       </div>
-      <div className='btnPagContainer'>
-        <button
-          type='button'
-          className='btnPag'
-          onClick={() => setPage(page - 1)}
-          disabled={page < 1}
-        >
-          Back
-        </button>
-        <button
-          type='button'
-          className='btnPag'
-          onClick={() => setPage(page + 1)}
-        >
-          Next
-        </button>
-      </div>
+
+      <button
+        type='button'
+        className='btnShowMore'
+        onClick={() => setPage((prevState) => prevState + 1)}
+        disabled={!canShowMore}
+      >
+        Show more
+      </button>
     </div>
   );
 };
