@@ -10,9 +10,11 @@ const CoinTable = () => {
   const [coins, setCoins] = useState<ICoin[]>([]);
   const limit = 20;
   const [page, setPage] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
   const [canShowMore, setCanShowMore] = useState(true);
 
   const fetchCoins = async () => {
+    setIsLoading(true);
     const res = await fetch(
       `https://api.coincap.io/v2/assets?limit=${limit}&offset=${page * limit}`
     );
@@ -23,6 +25,7 @@ const CoinTable = () => {
     } else {
       setCanShowMore(false);
     }
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -127,14 +130,18 @@ const CoinTable = () => {
         </table>
       </div>
 
-      <button
-        type='button'
-        className='btnShowMore'
-        onClick={() => setPage((prevState) => prevState + 1)}
-        disabled={!canShowMore}
-      >
-        Show more
-      </button>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <button
+          type='button'
+          className='btnShowMore'
+          onClick={() => setPage((prevState) => prevState + 1)}
+          disabled={!canShowMore}
+        >
+          Show more
+        </button>
+      )}
     </div>
   );
 };
