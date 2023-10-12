@@ -34,7 +34,7 @@ code {
 }
 
 .mainTable td {
-  padding: 9px 10px;
+  padding: 4px 10px;
   text-align: center;
 }
 
@@ -60,14 +60,9 @@ code {
   font-size: 16px;
 }
 
-.btnPagContainer {
-  margin: 30px auto;
+.btnShowMore {
   display: flex;
-  justify-content: space-between;
-  max-width: 1064px;
-}
-
-.btnPag {
+  margin: 30px auto;
   padding: 10px 15px;
   font-size: 20px;
   border: 0;
@@ -76,7 +71,78 @@ code {
   cursor: pointer;
 }
 
-.btnPag:hover {
+.btnShowMore:hover {
   background-color: rgb(139, 139, 139);
   color: white;
+}
+
+
+
+.searchPos {
+  display: flex;
+  justify-content: end;
+  max-width: 1064px;
+  margin: 30px auto;
+}
+
+.searchContainer {
+  border-radius: 5px;
+  box-shadow: 0px 0px 15px 5px rgba(60, 60, 60, 0.2);
+}
+
+.searchInput {
+  height: 40px;
+  width: 295px;
+  border: none;
+  border-radius: 5px 0 0 5px;
+  padding: 0 15px;
+  font-size: 16px;
+  outline: none;
+}
+
+.btnSearch {
+  border: none;
+  padding: 8px 13px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.searchResults {
+  margin: 45px -340px;
+  padding: 10px 20px;
+  position: absolute;
+  width: 300px;
+  height: 270px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0px 0px 15px 5px rgba(60, 60, 60, 0.2);
+}
+
+.searchResultsContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.searchResultNameContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.searchResultLogo {
+  width: 30px;
+  height: 30px;
+}
+
+.searchResultName {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.searchResultSymbol,
+.searchResultRank {
+  color: #979797;
 }
