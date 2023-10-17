@@ -1,13 +1,18 @@
 import React from 'react';
 import './index.css';
 import Home from './pages/Home';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Coin from './pages/Coin';
 
-function App() {
+const App = () => {
   return (
-    <div className='App'>
-      <Home />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/:id' element={<Coin />} />
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;

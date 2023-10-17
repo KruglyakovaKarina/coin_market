@@ -5,6 +5,7 @@ import { formatNum } from '../helper/formatNum';
 import { useSortableData } from '../hooks/useSortTableData';
 import { ICoin } from '../interfaces/coin.interface';
 import Spinner from './Spinner';
+import { useNavigate } from 'react-router-dom';
 
 const CoinTable = () => {
   const [coins, setCoins] = useState<ICoin[]>([]);
@@ -12,6 +13,7 @@ const CoinTable = () => {
   const [page, setPage] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [canShowMore, setCanShowMore] = useState(true);
+  const navigate = useNavigate();
 
   const fetchCoins = async () => {
     setIsLoading(true);
@@ -99,14 +101,14 @@ const CoinTable = () => {
                 marketCapUsd,
                 changePercent24Hr,
               }) => (
-                <tr key={id}>
+                <tr key={id} onClick={() => navigate(`/${id}`)}>
                   <td>{rank}</td>
                   <td>
                     <div className='coinNameContainer'>
                       <img
                         className='coinLogo'
                         src={`https://assets.coincap.io/assets/icons/${symbol.toLowerCase()}@2x.png`}
-                      ></img>
+                      />
                       <p className='coinName'>{name}</p>
                       <p className='coinSymbol'>{symbol}</p>
                     </div>

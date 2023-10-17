@@ -1,16 +1,7 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: Arial, Helvetica, sans-serif;
   background-color: rgb(241, 241, 241);
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }
 
 .container {
@@ -98,7 +89,7 @@ code {
 
 .searchPos {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   max-width: 1064px;
   margin: 30px auto;
 }
@@ -130,7 +121,7 @@ code {
   padding: 10px 20px;
   position: absolute;
   width: 300px;
-  height: 270px;
+  height: 260px;
   background-color: white;
   border-radius: 5px;
   box-shadow: 0px 0px 15px 5px rgba(60, 60, 60, 0.2);
@@ -157,10 +148,71 @@ code {
 
 .searchResultName {
   font-weight: bold;
-  cursor: pointer;
 }
 
 .searchResultSymbol,
 .searchResultRank {
   color: #979797;
+}
+
+.btnSearchResult {
+  cursor: pointer;
+  border: 0;
+  background-color: white;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 0;
+}
+
+.coinContainer {
+  padding: 30px 20px;
+}
+
+.coinInfo {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.coinInfoLogo {
+  width: 50px;
+  height: 50px;
+}
+
+.coinInfoName {
+  font-size: 30px;
+}
+
+.coinInfoNames {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 20px;
+}
+
+.coinInfoSymbol {
+  color: #979797;
+  font-size: 20px;
+}
+
+.coinPrices {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+}
+
+.coinPricesPrice {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.coinPricesChange {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
+  font-weight: bold;
 }
