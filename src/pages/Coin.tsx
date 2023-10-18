@@ -5,13 +5,14 @@ import { formatNum } from '../helper/formatNum';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
 import Spinner from '../components/Spinner';
+import Chart from '../components/Chart';
 
 const Coin = () => {
-  let { id = '' } = useParams();
+  const { id = '' } = useParams();
   const [coin, setCoin] = useState<ICoin | null>(null);
 
-  const fetchCoin = async (id: string) => {
-    const res = await fetch(`https://api.coincap.io/v2/assets/${id}`).then(
+  const fetchCoin = async (coinId: string) => {
+    const res = await fetch(`https://api.coincap.io/v2/assets/${coinId}`).then(
       (res) => res.json()
     );
 
@@ -21,6 +22,7 @@ const Coin = () => {
       setCoin(null);
     }
   };
+
   useEffect(() => {
     fetchCoin(id);
   }, []);
@@ -36,8 +38,10 @@ const Coin = () => {
                 src={`https://assets.coincap.io/assets/icons/${coin.symbol.toLowerCase()}@2x.png`}
               />
               <div className='coinInfoNames'>
-                <span className='coinInfoName'>{coin.name}</span>
-                <span className='coinInfoSymbol'>{coin.symbol}</span>
+                <p className='coinInfoName'>{coin.name}</p>
+                <div className='coinInfoSymbol'>
+                  <p>{coin.symbol}</p>
+                </div>
               </div>
             </div>
             <div className='coinPrices'>
@@ -64,8 +68,10 @@ const Coin = () => {
         ) : (
           <Spinner />
         )}
-        <div className='coinGraph'></div>
-        <div className='coinGraph'></div>
+        <div className='coinGraph'>
+          <Chart />
+        </div>
+        <div className=''></div>
       </div>
     </div>
   );
