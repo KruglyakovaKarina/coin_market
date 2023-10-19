@@ -64,14 +64,32 @@ const Coin = () => {
                 </span>
               </div>
             </div>
+            <div className='coinGraph'>
+              <Chart />
+            </div>
+            <div className='coinStatisticsContainer'>
+              <p className='coinStatisticsTitle'>{coin.name} statistics</p>
+              <div className='coinStatistics'>
+                <div className='coinStatisticsName'>
+                  <p>Market cap</p>
+                  <p>Total supply</p>
+                  <p>Max. supply</p>
+                </div>
+                <div className='coinStatisticsValue'>
+                  <p>{Number(coin.marketCapUsd).toFixed(0)}$</p>
+                  <p>{Number(coin.supply).toFixed(0) + ' ' + coin.symbol}</p>
+                  <p>
+                    {coin.maxSupply
+                      ? Number(coin.maxSupply).toFixed(0) + ' ' + coin.symbol
+                      : '∞'}
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         ) : (
           <Spinner />
         )}
-        <div className='coinGraph'>
-          <Chart />
-        </div>
-        <div className=''></div>
       </div>
     </div>
   );

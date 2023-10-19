@@ -6,4 +6,6 @@ export interface ICoin {
   priceUsd: number;
   marketCapUsd: number;
   changePercent24Hr: number;
+  supply: number;
+  maxSupply: number;
 }

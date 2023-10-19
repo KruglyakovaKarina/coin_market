@@ -8,7 +8,7 @@ body {
   max-width: 1024px;
   background-color: white;
   border-radius: 10px;
-  margin: 30px auto;
+  margin: 50px auto;
   box-shadow: 0px 0px 15px 5px rgba(60, 60, 60, 0.2);
   padding: 0 20px;
 }
@@ -220,5 +220,54 @@ body {
   flex-direction: row;
   gap: 5px;
   align-items: center;
+  font-weight: bold;
+}
+
+.btnsOptionTimeContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 10px 0;
+}
+
+.btnsOptionTime {
+  display: flex;
+  gap: 10px;
+  padding: 6px;
+  border-radius: 5px;
+  background-color: rgb(241, 241, 241);
+}
+
+.btnsOptionTime button {
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 4px 7px;
+  cursor: pointer;
+}
+
+.coinStatisticsTitle {
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 40px;
+}
+
+.coinStatistics {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.coinStatisticsValue {
+  text-align: right;
+}
+
+.coinStatisticsName p,
+.coinStatisticsValue p {
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.coinStatisticsValue p {
   font-weight: bold;
 }
