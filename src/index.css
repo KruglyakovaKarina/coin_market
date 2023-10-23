@@ -4,11 +4,11 @@ body {
   background-color: rgb(241, 241, 241);
 }
 
-.container {
+.containerTable {
   max-width: 1024px;
   background-color: white;
   border-radius: 10px;
-  margin: 50px auto;
+  margin: 30px auto;
   box-shadow: 0px 0px 15px 5px rgba(60, 60, 60, 0.2);
   padding: 0 20px;
 }
@@ -165,7 +165,15 @@ body {
 }
 
 .coinContainer {
-  padding: 30px 20px;
+  max-width: 1024px;
+  background-color: white;
+  border-radius: 10px;
+  margin: 40px auto;
+  box-shadow: 0px 0px 15px 5px rgba(60, 60, 60, 0.2);
+}
+
+.coin {
+  padding: 30px 40px;
 }
 
 .coinInfo {
@@ -173,7 +181,6 @@ body {
   flex-direction: row;
   gap: 20px;
   align-items: center;
-  margin-bottom: 15px;
 }
 
 .coinInfoLogo {
@@ -203,11 +210,39 @@ body {
   font-size: 15px;
 }
 
+.coinNamesAndRank {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.coinRank {
+  font-size: 22px;
+}
+
 .coinPrices {
   display: flex;
   flex-direction: row;
-  gap: 20px;
   align-items: center;
+  gap: 20px;
+}
+
+.btnAdd {
+  display: flex;
+  margin: auto;
+  margin-top: 10px;
+  padding: 10px 15px;
+  font-size: 18px;
+  border: 0;
+  border-radius: 5px;
+  background-color: #3861fb;
+  color: white;
+  cursor: pointer;
+}
+
+.btnAdd:hover {
+  background-color: #567bff;
 }
 
 .coinPricesPrice {
@@ -235,7 +270,7 @@ body {
   gap: 10px;
   padding: 6px;
   border-radius: 5px;
-  background-color: rgb(241, 241, 241);
+  background-color: #f1f1f1;
 }
 
 .btnsOptionTime button {
@@ -270,4 +305,98 @@ body {
 
 .coinStatisticsValue p {
   font-weight: bold;
+}
+
+.modalContainer {
+  width: 100%;
+  padding: 5px 10px;
+}
+
+.modalTitle,
+.modalQuantityAndPrice {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.modalTitle button {
+  border: none;
+  background-color: white;
+  font-size: 20px;
+}
+
+.modalTitle h2,
+.modalQuantity h4,
+.modalPrice h4 {
+  margin: 0;
+}
+
+.modalCoinInfo {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.modalQuantityAndPrice {
+  margin-top: 20px;
+}
+
+.modalQuantity input,
+.modalPrice input {
+  margin-top: 5px;
+  border: 1px solid #cacaca;
+  border-radius: 5px;
+  height: 25px;
+  width: 165px;
+  padding: 5px 10px;
+  font-size: 16px;
+}
+
+.modalDate {
+  margin-top: 25px;
+}
+
+.modalDate span {
+  background-color: #3861fb;
+  color: white;
+  border-radius: 5px;
+  padding: 7px 10px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.modalTotalPrice {
+  margin-top: 25px;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 15px 20px;
+}
+
+.modalTotalPrice h2 {
+  margin: 3px 0 0 0;
+}
+
+.modalTotalPrice span {
+  font-size: 16px;
+}
+
+.btnAddPortf {
+  display: flex;
+  margin: 20px auto 0 auto;
+  width: 100%;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 5px;
+  background-color: #3861fb;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btnAddPortf:hover {
+  background-color: #567bff;
 }
