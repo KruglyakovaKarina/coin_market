@@ -3,21 +3,15 @@ import { useParams } from 'react-router-dom';
 import { ICoin } from '../interfaces/coin.interface';
 import { formatNum } from '../helper/formatNum';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faCaretDown,
-  faCaretUp,
-  faClose,
-} from '@fortawesome/free-solid-svg-icons';
+import { faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons';
 import Spinner from '../components/Spinner';
 import Chart from '../components/Chart';
-import ReactModal from 'react-modal';
-import moment from 'moment';
+import Modal from '../components/Modal';
 
 const Coin = () => {
   const { id = '' } = useParams();
   const [coin, setCoin] = useState<ICoin | null>(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [numOfCoin, setNumOfCoin] = useState(0);
 
   const fetchCoin = async (coinId: string) => {
     const res = await fetch(`https://api.coincap.io/v2/assets/${coinId}`).then(
@@ -110,76 +104,11 @@ const Coin = () => {
                 Add to portfolio
               </button>
             </div>
-            <ReactModal
-              isOpen={modalIsOpen}
-              onRequestClose={closeModal}
-              style={{
-                overlay: {
-                  backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                },
-                content: {
-                  width: '400px',
-                  height: '400px',
-                  overflow: 'none',
-                  position: 'static',
-                  display: 'flex',
-                  margin: '200px auto',
-                  borderRadius: '10px',
-                },
-              }}
-            >
-              <div className='modalContainer'>
-                <div className='modalTitle'>
-                  <h2>Add transaction</h2>
-                  <button onClick={closeModal}>
-                    <FontAwesomeIcon icon={faClose} />
-                  </button>
-                </div>
-                <div className='modalCoinInfo'>
-                  <img
-                    className='coinInfoLogo'
-                    src={`https://assets.coincap.io/assets/icons/${coin.symbol.toLowerCase()}@2x.png`}
-                  />
-                  <div className='coinInfoNames'>
-                    <p className='coinInfoName'>{coin.name}</p>
-                    <div className='coinInfoSymbol'>
-                      <p>{coin.symbol}</p>
-                    </div>
-                  </div>
-                </div>
-                <div className='modalQuantityAndPrice'>
-                  <div className='modalQuantity'>
-                    <h4>Quantity</h4>
-                    <input
-                      placeholder='0.00'
-                      min={0}
-                      type='number'
-                      onChange={(e) => setNumOfCoin(Number(e.target.value))}
-                    ></input>
-                  </div>
-                  <div className='modalQuantity'>
-                    <h4>Price Per Coin</h4>
-                    <input
-                      min={0}
-                      defaultValue={Number(coin.priceUsd).toFixed(2)}
-                      type='number'
-                    ></input>
-                  </div>
-                </div>
-                <div className='modalDate'>
-                  <span>
-                    {moment(moment.now()).format('MMMM D, YYYY, h:mm A')}
-                  </span>
-                </div>
-                <div className='modalTotalPrice'>
-                  <span>Total Spent</span>
-                  <h2>$ {(numOfCoin * coin.priceUsd).toFixed(2)}</h2>
-                </div>
-                <button type='submit' className='btnAddPortf'>
-                  Add transaction
-                </button>
-              </div>
-            </ReactModal>
+            <Modal
+              coin={coin}
+              closeModal={closeModal}
+              modalIsOpen={modalIsOpen}
+            />
           </div>
         ) : (
           <Spinner />
