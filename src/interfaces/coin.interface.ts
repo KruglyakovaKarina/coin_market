@@ -9,3 +9,8 @@ export interface ICoin {
   supply: number;
   maxSupply: number;
 }
+
+export interface ICoinWithNumAndPrice extends ICoin {
+  numOfCoin: number;
+  coinPrice: number;
+}

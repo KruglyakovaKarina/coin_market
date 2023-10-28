@@ -4,6 +4,7 @@ import moment from 'moment';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ICoin } from '../interfaces/coin.interface';
+import { IPortfolio } from '../interfaces/portfolio.interface';
 
 const Modal: FC<{
   coin: ICoin;
@@ -11,7 +12,7 @@ const Modal: FC<{
   modalIsOpen: any;
 }> = ({ coin, closeModal, modalIsOpen }) => {
   const [numOfCoin, setNumOfCoin] = useState(0);
-  const [coinPrice, setCoinPrice] = useState(0);
+  const [coinPrice, setCoinPrice] = useState(coin.priceUsd);
 
   const addTransactionHandler = () => {
     const previousPortfolio = localStorage.getItem(`my_portfolio`) ?? '{}';
@@ -19,6 +20,16 @@ const Modal: FC<{
     const portfolio = JSON.parse(previousPortfolio);
     portfolio[`${coin.id}`] = { ...coin, numOfCoin, coinPrice };
     localStorage.setItem(`my_portfolio`, JSON.stringify(portfolio));
+    const initialValue = 0;
+    const totalPricePortfolio = Object.entries<IPortfolio>(portfolio).reduce(
+      (acc, [key, val]) => acc + +val.coinPrice * +val.numOfCoin,
+      initialValue
+    );
+    localStorage.setItem(
+      `totalPricePortfolio`,
+      JSON.stringify(totalPricePortfolio)
+    );
+
     closeModal();
   };
 
