@@ -38,7 +38,7 @@ const CoinTable = () => {
 
   return (
     <div>
-      <div className='container'>
+      <div className='containerTable'>
         <table className='mainTable'>
           <thead>
             <tr>

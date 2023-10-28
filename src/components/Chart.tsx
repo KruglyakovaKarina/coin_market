@@ -62,7 +62,7 @@ const Chart = () => {
       {
         label: id,
         data: getValues(prices),
-        borderColor: '#f268b6',
+        borderColor: '#3861fb',
       },
     ],
   };

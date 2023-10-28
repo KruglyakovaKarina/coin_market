@@ -168,12 +168,12 @@ body {
   max-width: 1024px;
   background-color: white;
   border-radius: 10px;
-  margin: 40px auto;
+  margin: 20px auto;
   box-shadow: 0px 0px 15px 5px rgba(60, 60, 60, 0.2);
 }
 
 .coin {
-  padding: 30px 40px;
+  padding: 20px 40px 25px 40px;
 }
 
 .coinInfo {
@@ -231,7 +231,6 @@ body {
 .btnAdd {
   display: flex;
   margin: auto;
-  margin-top: 10px;
   padding: 10px 15px;
   font-size: 18px;
   border: 0;
@@ -284,7 +283,7 @@ body {
 .coinStatisticsTitle {
   font-weight: bold;
   font-size: 16px;
-  margin-top: 40px;
+  margin-top: 25px;
 }
 
 .coinStatistics {
@@ -399,4 +398,85 @@ body {
 
 .btnAddPortf:hover {
   background-color: #567bff;
+}
+
+.headerContainer {
+  background-color: white;
+}
+
+.header {
+  max-width: 1064px;
+  height: 60px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerPopularCoins {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.headerCoins {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.headerNames {
+  color: #757575;
+  font-weight: bold;
+}
+
+.headerPrices {
+  color: #567bff;
+  font-weight: bold;
+}
+
+.portfolioPrice {
+  border: 0;
+  background-color: white;
+  cursor: pointer;
+}
+
+.modalPortfolioContainer {
+  width: 100%;
+  margin: auto;
+}
+
+.emptyPortfolio {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 20px 0;
+}
+
+.emptyPortfolioTexts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.emptyPortfolioTexts img {
+  width: 380px;
+}
+
+.emptyPortfolioTexts h1 {
+  margin: 0;
+}
+
+.emptyPortfolioBtnCont button {
+  border: none;
+  background-color: white;
+  font-size: 18px;
+}
+
+.emptyPortfolioBtnCont {
+  display: flex;
+  justify-content: space-between;
 }
